@@ -1,0 +1,101 @@
+open System
+//RECURSIVIDAD
+// FACTORIAL RECURSIVIDAD
+
+let rec Factorialrecursive (n:double) :double = 
+    if n<= double(1) then
+        double(1)
+    else
+        Factorialrecursive(n- double(1)) * double(n)
+
+// SUMA con recursividad
+let rec Sumarecursive (n:double):double =
+    if n<= double(1) then
+        double(n)
+    else
+        Sumarecursive(n- double(1)) + double(n)
+
+//FACTORIAL CON TAILRECURSION
+let FactTail n :double =
+    let rec Fact n ftr :doubl  e =
+        if n <= double(1) then  
+            ftr
+        else
+            Fact (n - double(1)) (ftr * n)
+    Fact n (double(1))
+
+//SUMA CON TAILR
+let SumaTail (n:double):double =
+    let rec Suma (n:double) (acum:double) :double =
+        if n <= double(1) then  
+            double(acum)
+        else
+            Suma (n- double(1)) (acum + n)
+    Suma (double(n)) (double(1))
+
+// MAXIMO COMUN DIVISOR CON TAIL RECURSION
+let rec GCDTAIL (num:double) (numero:double) :double =
+    if numero <= double(0) then
+        num
+    else
+        GCDTAIL (double(num)) (num % numero)
+
+
+// FACTORIAL  ITERATIVO
+let FactIt (n:double):double =
+    let mutable factorial:double = double(1)
+    if n < double(2) then
+        double(n)
+    else
+        for i in n .. double(-1) .. double(1) do
+            factorial <- factorial * (double(i))
+        double(factorial)
+
+// SUMA  ITERATIVO
+let SumaIterativa (n:double) :double =
+    let mutable suma:double = double(0)
+    if n < double(2) then
+        double(n)
+    else
+        for i in n .. double(-1) .. double(0) do
+            suma <- suma + double(i)
+        double(suma)
+
+    //GCD ITERATIVO
+let GCDIT num numero :double =
+    let mutable num = num:double
+    let mutable numero = numero:double
+    let mutable result = (num % numero):double
+    while result > double(0) do
+        num <- numero
+        numero <- result
+        result <- num % numero
+    double(numero)
+[<EntryPoint>]
+let main argv = 
+    printfn "Factorial"
+    let recursividadfactorial:double = Factorialrecursive (double(5))
+    printfn "Utilizando recursion: %f" recursividadfactorial
+    let tailRecursiveFacotrial:double = FactTail (double(1000))
+    printfn "Utilizando tail recursion: %f" tailRecursiveFacotrial
+    let iterativeFactorial:double = FactIt (double(5))
+    printfn "Utilizando Iteraccion: %f" iterativeFactorial
+    printfn ""
+
+    printfn "Suma de los valores"
+    let recursiveSuma:double = Sumarecursive (double(5))
+    printfn "Utilizando recursion: %f" recursiveSuma
+    let tailRecursiveSuma:double = SumaTail (double(5))
+    printfn "Utilizando tail recursion: %f" tailRecursiveSuma
+    let iterativeSum:double = SumaIterativa (double(5))
+    printfn "Utilizando Iteraccion: %f" iterativeSum
+    printfn ""
+
+    printfn "Maximo Comun Divisor"
+    let tailrecursiveGCD:double = GCDIT (double(60)) (double(15))
+    printfn "Utilizando recursion: %f" tailrecursiveGCD
+    let iterativoGCD:double = GCDIT (double(60)) (double(15))
+    printfn "Utilizando Iteraccion: %f" iterativoGCD
+    printfn ""
+    
+    0 

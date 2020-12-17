@@ -1,7 +1,7 @@
 #  Recursividad
 ___ 
 
-## Códigos de: suma, factor y máximo común divisor:
+## Códigos de suma, factor y máximo común divisor:
 
 [Iterativos](http://tpcg.io/b6gaNXXX)
 
